@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: expensemanagement
+
+  r2dbc:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+server:
+  port: ${APPLICATION_PORT}
+
