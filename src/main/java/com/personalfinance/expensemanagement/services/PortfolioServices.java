@@ -1,41 +1,38 @@
 package com.personalfinance.expensemanagement.services;
 
-import com.personalfinance.expensemanagement.dto.request.GenericRequest;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.constants.DebtAndReceivableStatus;
+import com.personalfinance.expensemanagement.dto.request.*;
+import com.personalfinance.expensemanagement.dto.response.*;
 import jakarta.validation.Valid;
 
 public interface PortfolioServices {
-    GenericResponse addNewInvestment(@Valid GenericRequest dto);
+    DataCreationResponse addNewInvestment(@Valid AddInvestmentRequest dto, String username);
 
-    GenericResponse editInvestment(@Valid GenericRequest dto);
+    Void editInvestment(@Valid EditInvestmentRequest dto, String username);
 
-    GenericResponse getInvestmentSummaryForUser(String username);
+    GetInvestmentResponse getInvestmentSummaryForUser(String username);
 
-    GenericResponse getInvestmentLedgerForUser(String username);
+    InvestmentLedgerResponse getInvestmentLedgerForUser(String username);
 
-    GenericResponse addNewDebt(@Valid GenericRequest dto);
+    DataCreationResponse addNewDebt(@Valid AddNewDebtRequest dto, String username);
 
-    GenericResponse editDebt(@Valid GenericRequest dto);
+    Void editDebt(@Valid EditDebtRequest dto, String username);
 
-    GenericResponse markDebtAsSettled(@Valid GenericRequest dto);
+    Void markDebtAsSettled(@Valid EditDebtRequest dto, String username);
 
-    GenericResponse getRemainingDebtsForUser(String username);
+    DataCreationResponse addNewReceivable(@Valid AddReceivableRequest dto, String username);
 
-    GenericResponse getPaidDebtsForUser(String username);
+    Void markReceivableAsSettled(@Valid EditReceivableRequest dto, String username);
 
-    GenericResponse addNewReceivable(@Valid GenericRequest dto);
+    GetInvestmentResponse getInvestmentById(String investmentId);
 
-    GenericResponse editReceivable(@Valid GenericRequest dto);
+    GetDebtsResponse getDebtById(String debtId);
 
-    GenericResponse markReceivableAsSettled(@Valid GenericRequest dto);
+    GetReceivablesResponse getReceivableById(String receivableId);
 
-    GenericResponse getRemainingReceivablesForUser(String username);
+    GetDebtsResponse getDebtsForUser(String username, DebtAndReceivableStatus status);
 
-    GenericResponse getReceivedReceivablesForUser(String username);
+    Void editReceivable(@Valid EditReceivableRequest dto, String username);
 
-    GenericResponse getInvestmentById(String investmentId);
-
-    GenericResponse getDebtById(String debtId);
-
-    GenericResponse getReceivableById(String receivableId);
+    GetReceivablesResponse getReceivablesForUser(String username, DebtAndReceivableStatus status);
 }

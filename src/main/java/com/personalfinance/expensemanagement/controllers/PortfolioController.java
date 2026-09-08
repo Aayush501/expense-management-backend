@@ -1,7 +1,8 @@
 package com.personalfinance.expensemanagement.controllers;
 
-import com.personalfinance.expensemanagement.dto.request.GenericRequest;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.constants.DebtAndReceivableStatus;
+import com.personalfinance.expensemanagement.dto.request.*;
+import com.personalfinance.expensemanagement.dto.response.*;
 import com.personalfinance.expensemanagement.services.PortfolioServices;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatusCode;
@@ -17,88 +18,78 @@ public class PortfolioController {
         this.portfolioServices = portfolioServices;
     }
 
-    @PostMapping("/add/investment")
-    public ResponseEntity<GenericResponse> addNewInvestment(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.addNewInvestment(dto), HttpStatusCode.valueOf(201));
+    @PostMapping("/add/{username}/investment")
+    public ResponseEntity<DataCreationResponse> addNewInvestment(@Valid @RequestBody AddInvestmentRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.addNewInvestment(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/edit/investment")
-    public ResponseEntity<GenericResponse> editInvestment(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.editInvestment(dto), HttpStatusCode.valueOf(200));
+    @PatchMapping("/edit/{username}/investment")
+    public ResponseEntity<Void> editInvestment(@Valid @RequestBody EditInvestmentRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.editInvestment(dto, username), HttpStatusCode.valueOf(204));
     }
 
     @GetMapping("/get/investment/summary/{username}")
-    public ResponseEntity<GenericResponse> getInvestmentSummaryForUser(@PathVariable String username) {
+    public ResponseEntity<GetInvestmentResponse> getInvestmentSummaryForUser(@PathVariable String username) {
         return new ResponseEntity<>(portfolioServices.getInvestmentSummaryForUser(username), HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/get/investment/ledger/{username}")
-    public ResponseEntity<GenericResponse> getInvestmentLedgerForUser(@PathVariable String username) {
+    public ResponseEntity<InvestmentLedgerResponse> getInvestmentLedgerForUser(@PathVariable String username) {
         return new ResponseEntity<>(portfolioServices.getInvestmentLedgerForUser(username), HttpStatusCode.valueOf(200));
     }
 
-    @PostMapping("/add/debt")
-    public ResponseEntity<GenericResponse> addNewDebt(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.addNewDebt(dto), HttpStatusCode.valueOf(201));
+    @PostMapping("/add/{username}/debt")
+    public ResponseEntity<DataCreationResponse> addNewDebt(@Valid @RequestBody AddNewDebtRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.addNewDebt(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/edit/debt")
-    public ResponseEntity<GenericResponse> editDebt(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.editDebt(dto), HttpStatusCode.valueOf(200));
+    @PatchMapping("/edit/{username}/debt")
+    public ResponseEntity<Void> editDebt(@Valid @RequestBody EditDebtRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.editDebt(dto, username), HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/debt/settle")
-    public ResponseEntity<GenericResponse> markDebtAsSettled(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.markDebtAsSettled(dto), HttpStatusCode.valueOf(200));
+    @PatchMapping("/debt/settle/{username}")
+    public ResponseEntity<Void> markDebtAsSettled(@Valid @RequestBody EditDebtRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.markDebtAsSettled(dto, username), HttpStatusCode.valueOf(204));
     }
 
-    @GetMapping("/debts/get/remaining/{username}")
-    public ResponseEntity<GenericResponse> getRemainingDebtsForUser(@PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.getRemainingDebtsForUser(username), HttpStatusCode.valueOf(200));
+    @GetMapping("/debts/get/{username}/{status}")
+    public ResponseEntity<GetDebtsResponse> getDebtsForUser(@PathVariable String username, @PathVariable DebtAndReceivableStatus status) {
+        return new ResponseEntity<>(portfolioServices.getDebtsForUser(username, status), HttpStatusCode.valueOf(200));
     }
 
-    @GetMapping("/debts/get/paid/{username}")
-    public ResponseEntity<GenericResponse> getPaidDebtsForUser(@PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.getPaidDebtsForUser(username), HttpStatusCode.valueOf(200));
+    @PostMapping("/add/{username}/receivable")
+    public ResponseEntity<DataCreationResponse> addNewReceivable(@Valid @RequestBody AddReceivableRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.addNewReceivable(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PostMapping("/add/receivable")
-    public ResponseEntity<GenericResponse> addNewReceivable(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.addNewReceivable(dto), HttpStatusCode.valueOf(201));
+    @PatchMapping("/edit/{username}/receivable")
+    public ResponseEntity<Void> editReceivable(@Valid @RequestBody EditReceivableRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.editReceivable(dto, username), HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/edit/receivable")
-    public ResponseEntity<GenericResponse> editReceivable(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.editReceivable(dto), HttpStatusCode.valueOf(200));
+    @PatchMapping("/receivable/settle/{username}")
+    public ResponseEntity<Void> markReceivableAsSettled(@Valid @RequestBody EditReceivableRequest dto, @PathVariable String username) {
+        return new ResponseEntity<>(portfolioServices.markReceivableAsSettled(dto, username), HttpStatusCode.valueOf(204));
     }
 
-    @PatchMapping("/receivable/settle")
-    public ResponseEntity<GenericResponse> markReceivableAsSettled(@Valid @RequestBody GenericRequest dto) {
-        return new ResponseEntity<>(portfolioServices.markReceivableAsSettled(dto), HttpStatusCode.valueOf(200));
-    }
-
-    @GetMapping("/receivable/get/remaining/{username}")
-    public ResponseEntity<GenericResponse> getRemainingReceivablesForUser(@PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.getRemainingReceivablesForUser(username), HttpStatusCode.valueOf(200));
-    }
-
-    @GetMapping("/receivable/get/received/{username}")
-    public ResponseEntity<GenericResponse> getReceivedReceivablesForUser(@PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.getReceivedReceivablesForUser(username), HttpStatusCode.valueOf(200));
+    @GetMapping("/receivable/get/{username}/{status}")
+    public ResponseEntity<GetReceivablesResponse> getReceivablesForUser(@PathVariable String username, @PathVariable DebtAndReceivableStatus status) {
+        return new ResponseEntity<>(portfolioServices.getReceivablesForUser(username, status), HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/get/investment/{investmentId}")
-    public ResponseEntity<GenericResponse> getInvestmentById(@PathVariable String investmentId) {
+    public ResponseEntity<GetInvestmentResponse> getInvestmentById(@PathVariable String investmentId) {
         return new ResponseEntity<>(portfolioServices.getInvestmentById(investmentId), HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/get/debt/{debtId}")
-    public ResponseEntity<GenericResponse> getDebtById(@PathVariable String debtId) {
+    public ResponseEntity<GetDebtsResponse> getDebtById(@PathVariable String debtId) {
         return new ResponseEntity<>(portfolioServices.getDebtById(debtId), HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/get/receivable/{receivableId}")
-    public ResponseEntity<GenericResponse> getReceivableById(@PathVariable String receivableId) {
+    public ResponseEntity<GetReceivablesResponse> getReceivableById(@PathVariable String receivableId) {
         return new ResponseEntity<>(portfolioServices.getReceivableById(receivableId), HttpStatusCode.valueOf(200));
     }
 }

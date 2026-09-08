@@ -1,7 +1,9 @@
 package com.personalfinance.expensemanagement.controllers;
 
 import com.personalfinance.expensemanagement.dto.request.*;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
+import com.personalfinance.expensemanagement.dto.response.SystemIdentityProvidingResponse;
+import com.personalfinance.expensemanagement.dto.response.UserDetailsResponse;
 import com.personalfinance.expensemanagement.services.AuthServices;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatusCode;
@@ -18,27 +20,32 @@ public class AuthController {
     }
 
     @PostMapping("/user/register")
-    public ResponseEntity<GenericResponse> registerUser(@Valid @RequestBody GenericRequest dto) {
+    public ResponseEntity<DataCreationResponse> registerUser(@Valid @RequestBody UserRegistrationRequest dto) {
         return new ResponseEntity<>(authServices.registerUser(dto), HttpStatusCode.valueOf(201));
     }
 
     @PostMapping("/user/login")
-    public ResponseEntity<GenericResponse> loginUser(@Valid @RequestBody GenericRequest dto) {
+    public ResponseEntity<SystemIdentityProvidingResponse> loginUser(@Valid @RequestBody LoginRequest dto) {
         return new ResponseEntity<>(authServices.loginUser(dto), HttpStatusCode.valueOf(200));
     }
 
-    @PatchMapping("/user/edit")
-    public ResponseEntity<Void> editUserDetails(@Valid @RequestBody GenericRequest dto) {
+    @PatchMapping("/user/edit/account/details")
+    public ResponseEntity<Void> editUserDetails(@Valid @RequestBody UserDetailsEditRequest dto) {
         return new ResponseEntity<>(authServices.editUserDetails(dto), HttpStatusCode.valueOf(204));
     }
 
-    @GetMapping("/user/get")
-    public ResponseEntity<GenericResponse> getUserDetails(@Valid @RequestBody GenericRequest dto) {
+    @GetMapping("/user/get/account/details")
+    public ResponseEntity<UserDetailsResponse> getUserDetails(@Valid @RequestBody GetUserDetailsRequest dto) {
         return new ResponseEntity<>(authServices.getUserDetails(dto), HttpStatusCode.valueOf(200));
     }
 
-    @DeleteMapping("/user/delete")
-    public ResponseEntity<Void> deleteUserAccount(@Valid @RequestBody GenericRequest dto) {
+    @DeleteMapping("/user/delete/account")
+    public ResponseEntity<Void> deleteUserAccount(@Valid @RequestBody CoreAccountDetailUpdateRequest dto) {
         return new ResponseEntity<>(authServices.deleteUserAccount(dto), HttpStatusCode.valueOf(204));
+    }
+
+    @PatchMapping("/user/edit/account/password")
+    public ResponseEntity<Void> changeAccountPassword(@Valid @RequestBody CoreAccountDetailUpdateRequest dto) {
+        return new ResponseEntity<>(authServices.editUserAccountPassword(dto), HttpStatusCode.valueOf(204));
     }
 }

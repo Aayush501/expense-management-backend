@@ -1,93 +1,85 @@
 package com.personalfinance.expensemanagement.services;
 
-import com.personalfinance.expensemanagement.dto.request.GenericRequest;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.constants.DebtAndReceivableStatus;
+import com.personalfinance.expensemanagement.dto.request.*;
+import com.personalfinance.expensemanagement.dto.response.*;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PortfolioServicesImpl implements PortfolioServices {
     @Override
-    public GenericResponse addNewInvestment(GenericRequest dto) {
+    public DataCreationResponse addNewInvestment(@Valid AddInvestmentRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse editInvestment(GenericRequest dto) {
+    public Void editInvestment(@Valid EditInvestmentRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse getInvestmentSummaryForUser(String username) {
+    public GetInvestmentResponse getInvestmentSummaryForUser(String username) {
         return null;
     }
 
     @Override
-    public GenericResponse getInvestmentLedgerForUser(String username) {
+    public InvestmentLedgerResponse getInvestmentLedgerForUser(String username) {
         return null;
     }
 
     @Override
-    public GenericResponse addNewDebt(GenericRequest dto) {
+    public DataCreationResponse addNewDebt(@Valid AddNewDebtRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse editDebt(GenericRequest dto) {
+    public Void editDebt(@Valid EditDebtRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse markDebtAsSettled(GenericRequest dto) {
+    public Void markDebtAsSettled(@Valid EditDebtRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse getRemainingDebtsForUser(String username) {
+    public DataCreationResponse addNewReceivable(@Valid AddReceivableRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse getPaidDebtsForUser(String username) {
+    public Void markReceivableAsSettled(@Valid EditReceivableRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse addNewReceivable(GenericRequest dto) {
+    public GetInvestmentResponse getInvestmentById(String investmentId) {
         return null;
     }
 
     @Override
-    public GenericResponse editReceivable(GenericRequest dto) {
+    public GetDebtsResponse getDebtById(String debtId) {
         return null;
     }
 
     @Override
-    public GenericResponse markReceivableAsSettled(GenericRequest dto) {
+    public GetReceivablesResponse getReceivableById(String receivableId) {
         return null;
     }
 
     @Override
-    public GenericResponse getRemainingReceivablesForUser(String username) {
+    public GetDebtsResponse getDebtsForUser(String username, DebtAndReceivableStatus status) {
         return null;
     }
 
     @Override
-    public GenericResponse getReceivedReceivablesForUser(String username) {
+    public Void editReceivable(EditReceivableRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse getInvestmentById(String investmentId) {
-        return null;
-    }
-
-    @Override
-    public GenericResponse getDebtById(String debtId) {
-        return null;
-    }
-
-    @Override
-    public GenericResponse getReceivableById(String receivableId) {
+    public GetReceivablesResponse getReceivablesForUser(String username, DebtAndReceivableStatus status) {
         return null;
     }
 }
