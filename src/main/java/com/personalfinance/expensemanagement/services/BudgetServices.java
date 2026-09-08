@@ -1,13 +1,15 @@
 package com.personalfinance.expensemanagement.services;
 
-import com.personalfinance.expensemanagement.dto.request.GenericRequest;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.dto.request.AddExpectedExpenseRequest;
+import com.personalfinance.expensemanagement.dto.request.AddIncomeRequest;
+import com.personalfinance.expensemanagement.dto.response.BudgetForMonthResponse;
+import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
 import jakarta.validation.Valid;
 
 public interface BudgetServices {
-    GenericResponse getBudgetForMonth(String month, String year);
+    BudgetForMonthResponse getBudgetForMonth(String month, String year, String s);
 
-    GenericResponse addIncome(@Valid GenericRequest dto);
+    DataCreationResponse addIncome(@Valid AddIncomeRequest dto, String username);
 
-    GenericResponse addExpectedExpense(@Valid GenericRequest dto);
+    DataCreationResponse addExpectedExpense(@Valid AddExpectedExpenseRequest dto, String username);
 }

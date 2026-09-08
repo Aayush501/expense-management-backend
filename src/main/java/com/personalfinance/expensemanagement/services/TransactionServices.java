@@ -1,15 +1,19 @@
 package com.personalfinance.expensemanagement.services;
 
-import com.personalfinance.expensemanagement.dto.request.GenericRequest;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.dto.request.AddTransactionRequest;
+import com.personalfinance.expensemanagement.dto.request.EditTransactionRequest;
+import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
+import com.personalfinance.expensemanagement.dto.response.GetTransactionsResponse;
 import jakarta.validation.Valid;
 
 public interface TransactionServices {
-    GenericResponse getTransactionsForBank(String bankId);
+    GetTransactionsResponse getTransactionsForBank(String bankId, String id);
 
-    GenericResponse addNewTransaction(@Valid GenericRequest dto);
+    DataCreationResponse addNewTransaction(@Valid AddTransactionRequest dto, String username);
 
-    GenericResponse editTransaction(@Valid GenericRequest dto);
+    Void editTransaction(@Valid EditTransactionRequest dto, String username);
 
-    GenericResponse getTransactionById(String transactionId);
+    GetTransactionsResponse getTransactionById(String transactionId, String id);
+
+    Void deleteTransactionById(String username, String transactionId);
 }

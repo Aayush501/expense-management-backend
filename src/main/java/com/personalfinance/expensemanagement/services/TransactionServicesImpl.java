@@ -1,28 +1,36 @@
 package com.personalfinance.expensemanagement.services;
 
-import com.personalfinance.expensemanagement.dto.request.GenericRequest;
-import com.personalfinance.expensemanagement.dto.response.GenericResponse;
+import com.personalfinance.expensemanagement.dto.request.AddTransactionRequest;
+import com.personalfinance.expensemanagement.dto.request.EditTransactionRequest;
+import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
+import com.personalfinance.expensemanagement.dto.response.GetTransactionsResponse;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TransactionServicesImpl implements TransactionServices {
     @Override
-    public GenericResponse getTransactionsForBank(String bankId) {
+    public GetTransactionsResponse getTransactionsForBank(String bankId, String id) {
         return null;
     }
 
     @Override
-    public GenericResponse addNewTransaction(GenericRequest dto) {
+    public DataCreationResponse addNewTransaction(@Valid AddTransactionRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse editTransaction(GenericRequest dto) {
+    public Void editTransaction(@Valid EditTransactionRequest dto, String username) {
         return null;
     }
 
     @Override
-    public GenericResponse getTransactionById(String transactionId) {
+    public GetTransactionsResponse getTransactionById(String transactionId, String id) {
+        return null;
+    }
+
+    @Override
+    public Void deleteTransactionById(String username, String transactionId) {
         return null;
     }
 }
