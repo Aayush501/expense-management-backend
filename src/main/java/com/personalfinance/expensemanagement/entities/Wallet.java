@@ -27,7 +27,7 @@ public class Wallet {
     private String username;
 
     @PositiveOrZero(message = "Balance" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double balance;
+    private Double balance;
 
     @ManyToOne(
             fetch = FetchType.LAZY,

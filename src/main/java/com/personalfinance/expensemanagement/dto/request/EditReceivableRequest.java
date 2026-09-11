@@ -17,13 +17,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EditReceivableRequest {
+    @NotBlank(message = "receivableId" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String receivableId;
 
     @NotBlank(message = "GivenTo" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String givenTo;
 
+    @NotNull(message = "amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotNull(message = "Date" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private LocalDate date;

@@ -28,10 +28,6 @@ public class UserDetails {
     @Email(message = "Email" + TablesAttributesValidationErrorMessages.VALIDATION_ERROR)
     private String email;
 
-    @Pattern(regexp = StandardPatternsOfApplication.PASSWORD,
-            message = TablesAttributesValidationErrorMessages.PASSWORD_VALIDATION_ERROR)
-    private String password;
-
     @Pattern(regexp = StandardPatternsOfApplication.PHONE,
             message = "Phone" + TablesAttributesValidationErrorMessages.VALIDATION_ERROR)
     private String phone;

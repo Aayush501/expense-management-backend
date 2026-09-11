@@ -36,7 +36,7 @@ public class CreditBudget {
     private String incomeName;
 
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @ManyToOne(
             fetch = FetchType.LAZY,

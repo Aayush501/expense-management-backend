@@ -17,10 +17,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EditDebtRequest {
+    @NotBlank(message = "debtId" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String debtId;
 
+    @NotNull(message = "amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotBlank(message = "TakenFrom" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String takenFrom;

@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EditTransactionRequest {
+    @NotBlank(message = "transactionId" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String transactionId;
 
     @NotNull(message = "Date" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
@@ -25,8 +26,9 @@ public class EditTransactionRequest {
     @NotBlank(message = "Description" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String description;
 
+    @NotNull(message = "amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotNull(message = "TransactionType" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private TransactionType transactionType;

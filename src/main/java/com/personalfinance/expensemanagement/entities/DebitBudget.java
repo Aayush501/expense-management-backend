@@ -36,10 +36,10 @@ public class DebitBudget {
     private String expenseName;
 
     @PositiveOrZero(message = "ExpectedAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double expectedAmount;
+    private Double expectedAmount;
 
     @PositiveOrZero(message = "ActualAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double actualAmount;
+    private Double actualAmount;
 
     @ManyToOne(
             fetch = FetchType.LAZY,

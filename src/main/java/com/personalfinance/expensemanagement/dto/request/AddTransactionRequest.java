@@ -17,16 +17,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddTransactionRequest {
-
-    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "username")
-    private String username;
-
     @NotNull(message = "Date" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private LocalDate date;
 
     @NotBlank(message = "Description" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String description;
 
+    @NotNull(message = "amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double amount;
 

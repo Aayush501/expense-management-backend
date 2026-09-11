@@ -17,14 +17,12 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddReceivableRequest {
-    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "username")
-    private String username;
-
     @NotBlank(message = "GivenTo" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String givenTo;
 
+    @NotNull(message = "amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotNull(message = "Date" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private LocalDate date;

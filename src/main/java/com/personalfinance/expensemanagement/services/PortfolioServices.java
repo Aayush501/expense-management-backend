@@ -14,7 +14,7 @@ public interface PortfolioServices {
 
     InvestmentLedgerResponse getInvestmentLedgerForUser(String username);
 
-    DataCreationResponse addNewDebt(@Valid AddNewDebtRequest dto, String username);
+    DataCreationResponse addNewDebt(@Valid AddDebtRequest dto, String username);
 
     Void editDebt(@Valid EditDebtRequest dto, String username);
 
