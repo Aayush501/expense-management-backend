@@ -21,10 +21,12 @@ public class AddBankRequest {
     @PositiveOrZero(message = "balance" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double balance;
 
+    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "linkedPhoneNumber")
     @Pattern(regexp = StandardPatternsOfApplication.PHONE,
             message = "Phone" + TablesAttributesValidationErrorMessages.VALIDATION_ERROR)
     private String linkedPhoneNumber;
 
+    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "linkedEmail")
     @Email(message = "Email" + TablesAttributesValidationErrorMessages.VALIDATION_ERROR)
     private String linkedEmail;
 }

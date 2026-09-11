@@ -31,7 +31,7 @@ public class Bank {
 
     @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "balance")
     @PositiveOrZero(message = "balance" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double balance;
+    private Double balance;
 
     @Pattern(regexp = StandardPatternsOfApplication.PHONE,
             message = "Phone" + TablesAttributesValidationErrorMessages.VALIDATION_ERROR)

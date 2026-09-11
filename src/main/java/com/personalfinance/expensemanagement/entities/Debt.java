@@ -28,7 +28,7 @@ public class Debt {
     private String username;
 
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotBlank(message = "TakenFrom" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String takenFrom;

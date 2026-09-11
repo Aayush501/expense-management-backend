@@ -16,12 +16,10 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddNewDebtRequest {
-    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "username")
-    private String username;
-
+public class AddDebtRequest {
+    @NotNull(message = "amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotBlank(message = "TakenFrom" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String takenFrom;

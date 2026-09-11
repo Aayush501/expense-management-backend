@@ -31,7 +31,7 @@ public class Receivable {
     private String givenTo;
 
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotNull(message = "Date" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private LocalDate date;

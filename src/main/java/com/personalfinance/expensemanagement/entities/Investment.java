@@ -34,17 +34,17 @@ public class Investment {
     private InvestmentType type;
 
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double installmentAmount;
+    private Double installmentAmount;
 
     @Positive(message = "Cumulative" + TablesAttributesValidationErrorMessages.POSITIVE)
     @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "Cumulative")
-    private long cumulative;
+    private Long cumulative;
 
     @PositiveOrZero(message = "Payment" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double payment;
+    private Double payment;
 
     @PositiveOrZero(message = "CurrentValue" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double currentValue;
+    private Double currentValue;
 
     @ManyToOne(
             fetch = FetchType.LAZY,

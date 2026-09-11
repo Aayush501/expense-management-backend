@@ -34,7 +34,7 @@ public class Transaction {
     private String description;
 
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double amount;
+    private Double amount;
 
     @NotNull(message = "TransactionType" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @Enumerated(EnumType.STRING)
@@ -49,7 +49,7 @@ public class Transaction {
     private String walletId;
 
     @PositiveOrZero(message = "BankBalanceAfterThisTransaction" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double balanceAfterThisTransaction;
+    private Double balanceAfterThisTransaction;
 
     @ManyToOne(
             fetch = FetchType.LAZY,

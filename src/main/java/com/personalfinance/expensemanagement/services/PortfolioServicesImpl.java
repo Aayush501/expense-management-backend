@@ -29,7 +29,7 @@ public class PortfolioServicesImpl implements PortfolioServices {
     }
 
     @Override
-    public DataCreationResponse addNewDebt(@Valid AddNewDebtRequest dto, String username) {
+    public DataCreationResponse addNewDebt(@Valid AddDebtRequest dto, String username) {
         return null;
     }
 

@@ -39,7 +39,7 @@ public class PortfolioController {
     }
 
     @PostMapping("/add/{username}/debt")
-    public ResponseEntity<DataCreationResponse> addNewDebt(@Valid @RequestBody AddNewDebtRequest dto, @PathVariable String username) {
+    public ResponseEntity<DataCreationResponse> addNewDebt(@Valid @RequestBody AddDebtRequest dto, @PathVariable String username) {
         return new ResponseEntity<>(portfolioServices.addNewDebt(dto, username), HttpStatusCode.valueOf(201));
     }
 

@@ -30,7 +30,7 @@ public class Divestment {
     private DivestmentType divestmentType;
 
     @PositiveOrZero(message = "DivestmentAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double divestmentAmount;
+    private Double divestmentAmount;
 
     @ManyToOne(
             fetch = FetchType.LAZY,

@@ -12,9 +12,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddExpectedExpenseRequest {
-    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "username")
-    private String username;
-
     @NotNull(message = "Month" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private MonthNames month;
 
@@ -24,9 +21,11 @@ public class AddExpectedExpenseRequest {
     @NotBlank(message = "ExpenseName" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String expenseName;
 
+    @NotNull(message = "expectedAmount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "ExpectedAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double expectedAmount;
 
+    @NotNull(message = "actualAmount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "ActualAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double actualAmount;
 }

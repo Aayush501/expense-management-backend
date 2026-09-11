@@ -12,9 +12,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddIncomeRequest {
-    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "username")
-    private String username;
-
     @NotNull(message = "Month" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private MonthNames month;
 
@@ -24,6 +21,7 @@ public class AddIncomeRequest {
     @NotBlank(message = "IncomeName" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String incomeName;
 
+    @NotNull(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double amount;
 }

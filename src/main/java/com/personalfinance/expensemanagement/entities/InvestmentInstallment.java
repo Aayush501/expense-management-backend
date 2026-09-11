@@ -25,10 +25,10 @@ public class InvestmentInstallment {
     private String investmentId;
 
     @Positive(message = "CumulativeCount" + TablesAttributesValidationErrorMessages.POSITIVE)
-    private long cumulativeCount;
+    private Long cumulativeCount;
 
     @PositiveOrZero(message = "InstallmentAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
-    private double installmentAmount;
+    private Double installmentAmount;
 
     @ManyToOne(
             fetch = FetchType.LAZY,
