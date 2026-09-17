@@ -1,21 +1,21 @@
 package com.personalfinance.expensemanagement.services;
 
+import com.personalfinance.expensemanagement.dto.entitydto.UserDetails;
 import com.personalfinance.expensemanagement.dto.request.*;
 import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
-import com.personalfinance.expensemanagement.dto.response.SystemIdentityProvidingResponse;
-import com.personalfinance.expensemanagement.dto.response.UserDetailsResponse;
+import com.personalfinance.expensemanagement.dto.response.LoginResponse;
 import jakarta.validation.Valid;
 
 public interface AuthServices {
     DataCreationResponse registerUser(@Valid UserRegistrationRequest dto);
 
-    SystemIdentityProvidingResponse loginUser(@Valid LoginRequest dto);
+    LoginResponse loginUser(@Valid LoginRequest dto);
 
-    Void editUserDetails(@Valid UserDetailsEditRequest dto);
+    Void editUserDetails(@Valid UserDetailsEditRequest dto, String username);
 
-    UserDetailsResponse getUserDetails(@Valid GetUserDetailsRequest dto);
+    UserDetails getUserDetails(String dto);
 
-    Void deleteUserAccount(@Valid CoreAccountDetailUpdateRequest dto);
+    Void deleteUserAccount(String dto, String username);
 
-    Void editUserAccountPassword(@Valid CoreAccountDetailUpdateRequest dto);
+    Void editUserAccountPassword(@Valid UpdatePasswordRequest dto, String username);
 }

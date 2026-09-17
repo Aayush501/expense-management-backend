@@ -1,9 +1,9 @@
 package com.personalfinance.expensemanagement.services;
 
+import com.personalfinance.expensemanagement.dto.entitydto.UserDetails;
 import com.personalfinance.expensemanagement.dto.request.*;
 import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
-import com.personalfinance.expensemanagement.dto.response.SystemIdentityProvidingResponse;
-import com.personalfinance.expensemanagement.dto.response.UserDetailsResponse;
+import com.personalfinance.expensemanagement.dto.response.LoginResponse;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
@@ -15,27 +15,27 @@ public class AuthServicesImpl implements AuthServices {
     }
 
     @Override
-    public SystemIdentityProvidingResponse loginUser(@Valid LoginRequest dto) {
+    public LoginResponse loginUser(@Valid LoginRequest dto) {
         return null;
     }
 
     @Override
-    public Void editUserDetails(@Valid UserDetailsEditRequest dto) {
+    public Void editUserDetails(@Valid UserDetailsEditRequest dto, String username) {
         return null;
     }
 
     @Override
-    public UserDetailsResponse getUserDetails(@Valid GetUserDetailsRequest dto) {
+    public UserDetails getUserDetails(String dto) {
         return null;
     }
 
     @Override
-    public Void deleteUserAccount(@Valid CoreAccountDetailUpdateRequest dto) {
+    public Void deleteUserAccount(String dto, String username) {
         return null;
     }
 
     @Override
-    public Void editUserAccountPassword(@Valid CoreAccountDetailUpdateRequest dto) {
+    public Void editUserAccountPassword(@Valid UpdatePasswordRequest dto, String username) {
         return null;
     }
 }

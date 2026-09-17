@@ -8,7 +8,7 @@ import jakarta.validation.Valid;
 public interface PortfolioServices {
     DataCreationResponse addNewInvestment(@Valid AddInvestmentRequest dto, String username);
 
-    Void editInvestment(@Valid EditInvestmentRequest dto, String username);
+    Void editInvestment(@Valid EditInvestmentRequest dto, String username, String investmentId);
 
     GetInvestmentResponse getInvestmentSummaryForUser(String username);
 
@@ -16,7 +16,7 @@ public interface PortfolioServices {
 
     DataCreationResponse addNewDebt(@Valid AddDebtRequest dto, String username);
 
-    Void editDebt(@Valid EditDebtRequest dto, String username);
+    Void editDebt(@Valid EditDebtRequest dto, String username, String debtId);
 
     Void markDebtAsSettled(@Valid EditDebtRequest dto, String username);
 
@@ -32,7 +32,7 @@ public interface PortfolioServices {
 
     GetDebtsResponse getDebtsForUser(String username, DebtAndReceivableStatus status);
 
-    Void editReceivable(@Valid EditReceivableRequest dto, String username);
+    Void editReceivable(@Valid EditReceivableRequest dto, String username, String receivableId);
 
     GetReceivablesResponse getReceivablesForUser(String username, DebtAndReceivableStatus status);
 }

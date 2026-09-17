@@ -19,14 +19,16 @@ public class BankController {
         this.bankServices = bankServices;
     }
 
-    @PostMapping("/user/add")
-    public ResponseEntity<DataCreationResponse> addBank(@Valid @RequestBody AddBankRequest dto) {
-        return new ResponseEntity<>(bankServices.addBank(dto), HttpStatusCode.valueOf(201));
+    @PostMapping("/{username}/add")
+    public ResponseEntity<DataCreationResponse> addBank(
+            @Valid @RequestBody AddBankRequest dto,
+            @PathVariable String username) {
+        return new ResponseEntity<>(bankServices.addBank(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/user/edit")
-    public ResponseEntity<Void> editBank(@Valid @RequestBody EditBankDetailRequest dto) {
-        return new ResponseEntity<>(bankServices.editBank(dto), HttpStatusCode.valueOf(200));
+    @PatchMapping("/{username}/edit/{bankId}")
+    public ResponseEntity<Void> editBank(@Valid @RequestBody EditBankDetailRequest dto, @PathVariable String bankId) {
+        return new ResponseEntity<>(bankServices.editBank(dto, bankId), HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/user/get/{username}")

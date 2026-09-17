@@ -14,7 +14,7 @@ public class PortfolioServicesImpl implements PortfolioServices {
     }
 
     @Override
-    public Void editInvestment(@Valid EditInvestmentRequest dto, String username) {
+    public Void editInvestment(@Valid EditInvestmentRequest dto, String username, String investmentId) {
         return null;
     }
 
@@ -34,7 +34,7 @@ public class PortfolioServicesImpl implements PortfolioServices {
     }
 
     @Override
-    public Void editDebt(@Valid EditDebtRequest dto, String username) {
+    public Void editDebt(@Valid EditDebtRequest dto, String username, String debtId) {
         return null;
     }
 
@@ -74,7 +74,7 @@ public class PortfolioServicesImpl implements PortfolioServices {
     }
 
     @Override
-    public Void editReceivable(EditReceivableRequest dto, String username) {
+    public Void editReceivable(EditReceivableRequest dto, String username, String receivableId) {
         return null;
     }
 

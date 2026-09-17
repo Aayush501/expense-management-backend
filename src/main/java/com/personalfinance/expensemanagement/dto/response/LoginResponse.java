@@ -1,6 +1,5 @@
 package com.personalfinance.expensemanagement.dto.response;
 
-import com.personalfinance.expensemanagement.dto.entitydto.UserDetails;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDetailsResponse {
-    private UserDetails user;
+public class LoginResponse {
+    private String username;
+    private String initialToken;
 }

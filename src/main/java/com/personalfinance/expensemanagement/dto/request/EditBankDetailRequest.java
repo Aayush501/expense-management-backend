@@ -14,9 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class EditBankDetailRequest {
     @NotBlank(message = "bankName" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
-    private String bankId;
-
-    @NotBlank(message = "bankName" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String bankName;
 
     @NotNull(message = "linkedPhoneNumber" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
