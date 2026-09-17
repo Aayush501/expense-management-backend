@@ -14,9 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EditInvestmentRequest {
-    @NotBlank(message = "investmentId" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
-    private String investmentId;
-
     @NotBlank(message = "InvestmentName" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String investmentName;
 

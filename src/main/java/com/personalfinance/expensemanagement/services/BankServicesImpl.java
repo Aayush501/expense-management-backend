@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class BankServicesImpl implements BankServices {
     @Override
-    public DataCreationResponse addBank(@Valid AddBankRequest dto) {
+    public DataCreationResponse addBank(@Valid AddBankRequest dto, String username) {
         return null;
     }
 
     @Override
-    public Void editBank(@Valid EditBankDetailRequest dto) {
+    public Void editBank(@Valid EditBankDetailRequest dto, String bankId) {
         return null;
     }
 

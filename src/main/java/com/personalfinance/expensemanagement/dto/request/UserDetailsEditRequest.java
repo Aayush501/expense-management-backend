@@ -26,14 +26,8 @@ public class UserDetailsEditRequest {
             message = "Phone" + TablesAttributesValidationErrorMessages.VALIDATION_ERROR)
     private String phone;
 
-    @NotBlank(message = "username" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
-    private String username;
-
     @NotEmpty(message = "password" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @Pattern(regexp = StandardPatternsOfApplication.PASSWORD,
             message = TablesAttributesValidationErrorMessages.PASSWORD_VALIDATION_ERROR)
     private String password;
-
-    private String systemIdentity;
-    private String token;
 }

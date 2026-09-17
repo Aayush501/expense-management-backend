@@ -14,9 +14,6 @@ public class AddBankRequest {
     @NotBlank(message = "bankName" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String bankName;
 
-    @NotBlank(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "username")
-    private String username;
-
     @NotNull(message = TablesAttributesValidationErrorMessages.IMPOSSIBLE_TO_ADD + "balance")
     @PositiveOrZero(message = "balance" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double balance;

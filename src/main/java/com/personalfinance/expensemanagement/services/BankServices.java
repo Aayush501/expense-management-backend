@@ -7,9 +7,9 @@ import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
 import jakarta.validation.Valid;
 
 public interface BankServices {
-    DataCreationResponse addBank(@Valid AddBankRequest dto);
+    DataCreationResponse addBank(@Valid AddBankRequest dto, String username);
 
-    Void editBank(@Valid EditBankDetailRequest dto);
+    Void editBank(@Valid EditBankDetailRequest dto, String bankId);
 
     BanksListResponse getBanksForUser(String username);
 

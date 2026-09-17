@@ -1,7 +1,6 @@
 package com.personalfinance.expensemanagement.services;
 
-import com.personalfinance.expensemanagement.dto.request.AddTransactionRequest;
-import com.personalfinance.expensemanagement.dto.request.EditTransactionRequest;
+import com.personalfinance.expensemanagement.dto.request.AddAndEditTransactionRequest;
 import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
 import com.personalfinance.expensemanagement.dto.response.GetTransactionsResponse;
 import jakarta.validation.Valid;
@@ -15,12 +14,12 @@ public class TransactionServicesImpl implements TransactionServices {
     }
 
     @Override
-    public DataCreationResponse addNewTransaction(@Valid AddTransactionRequest dto, String username) {
+    public DataCreationResponse addNewTransaction(@Valid AddAndEditTransactionRequest dto, String username) {
         return null;
     }
 
     @Override
-    public Void editTransaction(@Valid EditTransactionRequest dto, String username) {
+    public Void editTransaction(@Valid AddAndEditTransactionRequest dto, String username, String transactionId) {
         return null;
     }
 

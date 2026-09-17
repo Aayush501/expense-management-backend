@@ -1,7 +1,6 @@
 package com.personalfinance.expensemanagement.controllers;
 
-import com.personalfinance.expensemanagement.dto.request.AddTransactionRequest;
-import com.personalfinance.expensemanagement.dto.request.EditTransactionRequest;
+import com.personalfinance.expensemanagement.dto.request.AddAndEditTransactionRequest;
 import com.personalfinance.expensemanagement.dto.response.DataCreationResponse;
 import com.personalfinance.expensemanagement.dto.response.GetTransactionsResponse;
 import com.personalfinance.expensemanagement.services.TransactionServices;
@@ -25,13 +24,16 @@ public class TransactionController {
     }
 
     @PostMapping("/add/{username}/transaction")
-    public ResponseEntity<DataCreationResponse> addNewTransaction(@Valid @RequestBody AddTransactionRequest dto, @PathVariable String username) {
+    public ResponseEntity<DataCreationResponse> addNewTransaction(@Valid @RequestBody AddAndEditTransactionRequest dto, @PathVariable String username) {
         return new ResponseEntity<>(transactionServices.addNewTransaction(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/edit/{username}/transaction")
-    public ResponseEntity<Void> editTransaction(@Valid @RequestBody EditTransactionRequest dto, @PathVariable String username) {
-        return new ResponseEntity<>(transactionServices.editTransaction(dto, username), HttpStatusCode.valueOf(200));
+    @PatchMapping("/edit/{username}/transaction/{transactionId}")
+    public ResponseEntity<Void> editTransaction(
+            @Valid @RequestBody AddAndEditTransactionRequest dto,
+            @PathVariable String username,
+            @PathVariable String transactionId) {
+        return new ResponseEntity<>(transactionServices.editTransaction(dto, username, transactionId), HttpStatusCode.valueOf(200));
     }
 
     @GetMapping("/get/{username}/{transactionId}")

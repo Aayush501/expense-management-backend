@@ -17,9 +17,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EditReceivableRequest {
-    @NotBlank(message = "receivableId" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
-    private String receivableId;
-
     @NotBlank(message = "GivenTo" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private String givenTo;
 

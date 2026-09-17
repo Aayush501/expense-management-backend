@@ -23,9 +23,12 @@ public class PortfolioController {
         return new ResponseEntity<>(portfolioServices.addNewInvestment(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/edit/{username}/investment")
-    public ResponseEntity<Void> editInvestment(@Valid @RequestBody EditInvestmentRequest dto, @PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.editInvestment(dto, username), HttpStatusCode.valueOf(204));
+    @PatchMapping("/edit/{username}/investment/{investmentId}")
+    public ResponseEntity<Void> editInvestment(
+            @Valid @RequestBody EditInvestmentRequest dto,
+            @PathVariable String username,
+            @PathVariable String investmentId) {
+        return new ResponseEntity<>(portfolioServices.editInvestment(dto, username, investmentId), HttpStatusCode.valueOf(204));
     }
 
     @GetMapping("/get/investment/summary/{username}")
@@ -43,9 +46,12 @@ public class PortfolioController {
         return new ResponseEntity<>(portfolioServices.addNewDebt(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/edit/{username}/debt")
-    public ResponseEntity<Void> editDebt(@Valid @RequestBody EditDebtRequest dto, @PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.editDebt(dto, username), HttpStatusCode.valueOf(204));
+    @PatchMapping("/edit/{username}/debt/{debtId}")
+    public ResponseEntity<Void> editDebt(
+            @Valid @RequestBody EditDebtRequest dto,
+            @PathVariable String username,
+            @PathVariable String debtId) {
+        return new ResponseEntity<>(portfolioServices.editDebt(dto, username, debtId), HttpStatusCode.valueOf(204));
     }
 
     @PatchMapping("/debt/settle/{username}")
@@ -63,9 +69,12 @@ public class PortfolioController {
         return new ResponseEntity<>(portfolioServices.addNewReceivable(dto, username), HttpStatusCode.valueOf(201));
     }
 
-    @PatchMapping("/edit/{username}/receivable")
-    public ResponseEntity<Void> editReceivable(@Valid @RequestBody EditReceivableRequest dto, @PathVariable String username) {
-        return new ResponseEntity<>(portfolioServices.editReceivable(dto, username), HttpStatusCode.valueOf(204));
+    @PatchMapping("/edit/{username}/receivable/{receivableId}")
+    public ResponseEntity<Void> editReceivable(
+            @Valid @RequestBody EditReceivableRequest dto,
+            @PathVariable String username,
+            @PathVariable String receivableId) {
+        return new ResponseEntity<>(portfolioServices.editReceivable(dto, username, receivableId), HttpStatusCode.valueOf(204));
     }
 
     @PatchMapping("/receivable/settle/{username}")

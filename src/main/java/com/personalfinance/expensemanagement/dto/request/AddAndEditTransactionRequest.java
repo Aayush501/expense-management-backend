@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AddTransactionRequest {
+public class AddAndEditTransactionRequest {
     @NotNull(message = "Date" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private LocalDate date;
 
