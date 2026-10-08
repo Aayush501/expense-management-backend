@@ -32,4 +32,6 @@ public class EditReceivableRequest {
 
     @NotNull(message = "ReceivableStatus" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private DebtAndReceivableStatus status;
+
+    private String bankId;
 }

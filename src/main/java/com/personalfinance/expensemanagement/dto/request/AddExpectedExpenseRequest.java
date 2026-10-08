@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,4 +30,8 @@ public class AddExpectedExpenseRequest {
     @NotNull(message = "actualAmount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "ActualAmount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double actualAmount;
+
+    private String bankId;
+    private LocalDate date;
+    private String description;
 }
