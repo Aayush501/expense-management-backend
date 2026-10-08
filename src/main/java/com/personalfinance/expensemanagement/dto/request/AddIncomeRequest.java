@@ -7,6 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,4 +26,8 @@ public class AddIncomeRequest {
     @NotNull(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     @PositiveOrZero(message = "Amount" + TablesAttributesValidationErrorMessages.NOT_NEGATIVE)
     private Double amount;
+
+    private String bankId;
+    private LocalDate date;
+    private String description;
 }

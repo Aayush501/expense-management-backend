@@ -32,4 +32,6 @@ public class EditDebtRequest {
 
     @NotNull(message = "DebtStatus" + TablesAttributesValidationErrorMessages.NOT_EMPTY)
     private DebtAndReceivableStatus status;
+
+    private String bankId;
 }
